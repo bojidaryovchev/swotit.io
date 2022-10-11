@@ -104,7 +104,7 @@ module "cloudfront_cert" {
 
 module "tf_next" {
   source  = "milliHQ/next-js/aws"
-  version = "1.0.0-canary.4"
+  version = "1.0.0-canary.5"
 
   cloudfront_aliases             = local.aliases
   cloudfront_acm_certificate_arn = module.cloudfront_cert.acm_certificate_arn
@@ -117,6 +117,10 @@ module "tf_next" {
   providers = {
     aws.global_region = aws.global_region
   }
+
+  # Uncomment when using in the cloned monorepo for tf-next development
+  # source = "../.."
+  # debug_use_local_packages = true
 }
 
 #########
